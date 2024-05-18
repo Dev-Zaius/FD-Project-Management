@@ -71,7 +71,7 @@ class TaskCard extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: data.type.getColor(),
+                      backgroundColor: data.type.getColor(),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -177,7 +177,9 @@ class _Tile extends StatelessWidget {
   Widget _subtitle(String data) {
     return Text(
       data,
-      style: Theme.of(Get.context!).textTheme.caption,
+      style: Theme.of(Get.context!)
+          .textTheme
+          .titleMedium, // ou subtitle2 selon vos besoins
       textAlign: TextAlign.left,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
@@ -209,10 +211,12 @@ class _IconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kBorderRadius),
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.transparent),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(kBorderRadius),
+          ),
         ),
       ),
       onPressed: onPressed,
